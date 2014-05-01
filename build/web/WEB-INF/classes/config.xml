@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 配置文件，在页面中所有配置都可以通过${cfg.attr}访问 -->
+<config>
+    <item name="debug">true</item>
+    <item name="appName">基础框架</item>
+</config>
