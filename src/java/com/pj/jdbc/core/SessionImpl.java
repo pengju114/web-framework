@@ -134,7 +134,6 @@ class SessionImpl implements Session{
             rslist.addColumnName(n);
         }
         
-        startRow--;
         int count=0;
         
         if (r.last()) {
@@ -313,5 +312,9 @@ class SessionImpl implements Session{
 
     public ResultList<ResultRow> list(String table) throws SQLException{
         return executeQuery("select * from "+table);
+    }
+
+    public ResultList<ResultRow> list(String table, int startRow, int rowCount) throws SQLException {
+        return executeQuery("select * from "+table, null, startRow, rowCount);
     }
 }

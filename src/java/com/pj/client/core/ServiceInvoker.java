@@ -112,7 +112,7 @@ public abstract class ServiceInvoker {
      * 若无错误将继续执行，否则将不执行{@link ServiceResolver#execute()}方法
      * @throws Exception 
      */
-    public abstract void beforeInvoke() throws Exception;
+    public abstract void invokePrepare() throws Exception;
     
     /**
      * 在调用{@link ServiceResolver#execute()}后调用
@@ -120,7 +120,7 @@ public abstract class ServiceInvoker {
      * @param result 调用{@link ServiceResolver#execute()}返回的结果,may be null
      * @throws Exception 
      */
-    public abstract void afterInvoke(ServiceResult result) throws Exception;
+    public abstract void invokeComplete(ServiceResult result) throws Exception;
     
     /**
      * 此方法将调用{@link ServiceResolver#execute()}方法
@@ -146,12 +146,29 @@ public abstract class ServiceInvoker {
         ServiceResult serviceResult=null;
         int errorCode=ClientException.REQUEST_OK;
         try {
-            beforeInvoke();
+            invokePrepare();
 
             String clazz=getResolverClassName();
             Class<ServiceResolver> resolverClass=(Class<ServiceResolver>) Class.forName(clazz);
             ServiceResolver resolver=resolverClass.newInstance();
-            serviceResult=resolver.execute();
+            
+            try {
+                resolver.executePrepare();
+            } catch (Exception e) {
+                LOGGER.error(e.getMessage(), e);
+            }
+            
+            try {
+                serviceResult=resolver.execute();
+            } catch (Exception e) {
+                throw e;
+            } finally{
+                try {
+                    resolver.executeComplete(serviceResult);
+                } catch (Exception e) {
+                    LOGGER.error(e.getMessage(), e);
+                }
+            }
             
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
@@ -165,7 +182,7 @@ public abstract class ServiceInvoker {
         }
 
         try {
-            afterInvoke(serviceResult);
+            invokeComplete(serviceResult);
         } catch (Exception e) {
             LOGGER.error(e.getMessage(), e);
             if (e instanceof ClientException) {
@@ -210,6 +227,7 @@ public abstract class ServiceInvoker {
      * 把结果转换成JSON数据然后输出
      * 所有输出在此完成
      * 可重写
+     * @param writer
      * @param rMap
      * @throws IOException 
      */

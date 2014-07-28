@@ -17,18 +17,11 @@ import java.util.HashMap;
  * 时间:2012-7-16 21:22:20
  */
 public class BaseService {
-    private HashMap<String,JdbcTemplate> jdbcTemplateMap=new HashMap<String, JdbcTemplate>();
     protected JdbcTemplate getJdbcTemplate(){
         return  getJdbcTemplate(SessionFactory.DEFAULT_SESSION);
     }
     protected JdbcTemplate getJdbcTemplate(String id){
-        JdbcTemplate template=jdbcTemplateMap.get(id);
-        if (template==null) {
-            template=new JdbcTemplate(id);
-            jdbcTemplateMap.put(id, template);
-        }
-        
-        return template;
+        return new JdbcTemplate(id);
     }
     /**
      * 用完记得关闭

@@ -32,16 +32,16 @@ public class XMLInvoker extends BaseServiceInvoker{
     }
     
     @Override
-    public void beforeInvoke() throws Exception{
-        super.beforeInvoke();
+    public void invokePrepare() throws Exception{
+        super.invokePrepare();
         getResponse().setContentType("text/xml; charset="+getCharset());
     }
     
     @Override
     protected void writeResult(PrintWriter writer,Map<String,Object> rMap) throws IOException{
-        StringBuilder builder=new StringBuilder("<data>");
+        StringBuilder builder=new StringBuilder("<response>");
         genXML(builder, rMap);
-        builder.append("</data>");
+        builder.append("</response>");
         writer.print(builder);
     }
     
@@ -54,6 +54,7 @@ public class XMLInvoker extends BaseServiceInvoker{
     }
     
     private void wrapMap(StringBuilder builder,Map<String,Object> data){
+        
         for (Map.Entry<String, Object> entry : data.entrySet()) {
             String string = entry.getKey();
             Object object = entry.getValue();
@@ -80,7 +81,5 @@ public class XMLInvoker extends BaseServiceInvoker{
             }
             builder.append("</item>");
         }
-        
     }
-
 }

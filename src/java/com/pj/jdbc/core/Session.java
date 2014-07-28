@@ -56,7 +56,7 @@ public interface Session {
      * 按参数执行有限数据行查询
      * @param sql
      * @param paramVals
-     * @param startRow 起始行下标 从1开始
+     * @param startRow 起始行下标 从0开始
      * @param rowCount 需要的结果行数
      * @return 结果列表
      * @throws SQLException 
@@ -67,7 +67,7 @@ public interface Session {
      * 按参数执行有限数据行查询,并将每一行结果行交给filter包装
      * @param sql
      * @param paramVals
-     * @param startRow 起始行下标 从1开始
+     * @param startRow 起始行下标 从0开始
      * @param rowCount 需要的结果行数
      * @param filter 结果集过滤器,可以在这里对记录行进行包装,返回包装的对象即可
      * @return
@@ -148,7 +148,7 @@ public interface Session {
      * @param <T> 目标类型
      * @param sql sql语句
      * @param paramVals 参数值
-     * @param startRow 起始行下标,从1开始
+     * @param startRow 起始行下标,从0开始
      * @param rowCount 结果行数
      * @param clazz 类型
      * @return
@@ -212,4 +212,14 @@ public interface Session {
      * @return 
      */
     public ResultList<ResultRow> list(String table) throws SQLException;
+    
+    /**
+     * 列出表格中从startRow行开始的rowCount条数据
+     * @param table 表格名称
+     * @param startRow 起始行下标,从0开始。第一行就是0，第二行就是1……
+     * @param rowCount
+     * @return
+     * @throws SQLException 
+     */
+    public ResultList<ResultRow> list(String table, int startRow, int rowCount) throws SQLException;
 }

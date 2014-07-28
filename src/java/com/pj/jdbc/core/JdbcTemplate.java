@@ -459,4 +459,21 @@ public class JdbcTemplate {
         
         return val;
     }
+    
+    
+    public ResultList<ResultRow> list(String table, int startRow, int rowCount) {
+        ResultList<ResultRow> val=null;
+        Session session=getSession();
+        if (session!=null) {
+            try {
+                val=session.list(table, startRow, rowCount);
+            } catch (Exception e) {
+                log(e.getMessage(), e);
+            } finally{
+                closeSession(session);
+            }
+        }
+        
+        return val;
+    }
 }

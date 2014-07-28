@@ -15,4 +15,12 @@ public class DebugService extends BaseService{
     public ResultList<ResultRow> listDetail(){
         return getJdbcTemplate().executeQuery("select * from t_view_authority_detail");
     }
+    
+    public ResultList<ResultRow> listAll(){
+        return getJdbcTemplate().list("WEB_TEST");
+    }
+    
+    public ResultList<ResultRow> listAll(int start,int length){
+        return getJdbcTemplate().list("WEB_TEST",start,length);
+    }
 }

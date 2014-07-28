@@ -17,11 +17,11 @@ import com.pj.client.core.ServiceResult;
 public abstract class BaseServiceInvoker extends ServiceInvoker{
 
     @Override
-    public void beforeInvoke() throws Exception {
+    public void invokePrepare() throws Exception {
     }
 
     @Override
-    public void afterInvoke(ServiceResult result) throws Exception {
+    public void invokeComplete(ServiceResult result) throws Exception {
     }
 
 }
