@@ -30,6 +30,7 @@ public class Resolver10001 extends ServiceResolver{
         ResultList<ResultRow> dataList = service.listAll((getPageNumber()-1)*getPageSize(),getPageSize());
         result.getData().addAll(dataList.toList());
         caculatePageProperties(dataList.getTotalRowsCount(),result);
+        getRequest().getSession(true).getAttribute("");
         return result;
     }
 }
