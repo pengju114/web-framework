@@ -5,6 +5,8 @@
 
 package com.pj.client.core.invokers;
 
+import com.pj.client.core.ServiceInvoker;
+import com.pj.utilities.StringUtility;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -13,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * email:pengju114@163.com
  * 时间:2012-9-20 0:38:18
  */
-public class JSONInvoker extends BaseServiceInvoker{
+public class JSONInvoker extends ServiceInvoker{
     private String resolverClassName;
     
     public JSONInvoker(){
@@ -24,6 +26,10 @@ public class JSONInvoker extends BaseServiceInvoker{
 
     @Override
     public String getResolverClassName() {
-        return resolverClassName;
+        String configName = super.getResolverClassName();
+        if (StringUtility.isEmpty(configName)) {
+            return resolverClassName;
+        }
+        return configName;
     }
 }

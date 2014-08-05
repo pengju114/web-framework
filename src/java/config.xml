@@ -3,6 +3,11 @@
 <!-- 配置文件，在页面中所有配置都可以通过${cfg.attr}访问 -->
 <!-- 在代码中通过com.pj.web.res.Config.getConfig访问 -->
 <config>
+    
+    <item name="pattern.service.invoker">com.pj.client.core.invokers.%sInvoker</item>
+    <item name="pattern.service.resolver">com.pj.client.core.resolvers.Resolver%s</item>
+    
     <item name="debug">true</item>
     <item name="appName">基础框架</item>
+    
 </config>

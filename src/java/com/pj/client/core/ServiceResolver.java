@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * 时间:2012-9-18 22:29:58
  */
 public abstract class ServiceResolver {
+    public static final String CONF_CLASS_PATTERN="pattern.service.resolver";
     
     private static final int DEFAULT_PAGESIZE = 10;
     

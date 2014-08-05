@@ -6,8 +6,8 @@
 package com.pj.client.core;
 
 import com.pj.json.JSONObject;
-import com.pj.json.JSONTokener;
 import com.pj.utilities.StringUtility;
+import com.pj.web.res.Config;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -28,6 +28,8 @@ import org.apache.log4j.Logger;
  * 时间:2012-9-18 22:39:08
  */
 public abstract class ServiceInvoker {
+    public static final String CONF_CLASS_PATTERN="pattern.service.invoker";
+    
     public static final String KEY_REQUEST="com.pj.client.core.request";
     public static final String KEY_RESPONSE="com.pj.client.core.response";
     public static final String KEY_RESULT="result";//结果键
@@ -103,16 +105,28 @@ public abstract class ServiceInvoker {
      * 通过这个方法可以获取类{@link ServiceResolver}的实现类全路径
      * 然后就可以通过反射查找类并调用服务
      * 如"com.pj.client.core.resolvers.JSONResolver10001"
+     * 默认实现为去配置文件里面获取路径模式，无配置则返回null
      * @return ServiceResolver类全路径
      */
-    public abstract String getResolverClassName();
+    public String getResolverClassName(){
+        String service = getRequest().getParameter(KEY_HEADER_SERVICE);
+        String pattern = Config.getConfig(ServiceResolver.CONF_CLASS_PATTERN, null);
+        
+        if (StringUtility.isEmpty(service) || StringUtility.isEmpty(pattern)) {
+            return null;
+        }
+        
+        return String.format(pattern, service);
+    }
     
     /**
      * 在调用{@link ServiceResolver#execute()}方法前调用
      * 若无错误将继续执行，否则将不执行{@link ServiceResolver#execute()}方法
      * @throws Exception 
      */
-    public abstract void invokePrepare() throws Exception;
+    public void invokePrepare() throws Exception{
+        
+    }
     
     /**
      * 在调用{@link ServiceResolver#execute()}后调用
@@ -120,7 +134,9 @@ public abstract class ServiceInvoker {
      * @param result 调用{@link ServiceResolver#execute()}返回的结果,may be null
      * @throws Exception 
      */
-    public abstract void invokeComplete(ServiceResult result) throws Exception;
+    public void invokeComplete(ServiceResult result) throws Exception{
+        
+    }
     
     /**
      * 此方法将调用{@link ServiceResolver#execute()}方法
