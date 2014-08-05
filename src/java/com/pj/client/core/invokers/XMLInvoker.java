@@ -5,6 +5,7 @@
 
 package com.pj.client.core.invokers;
 
+import com.pj.client.core.ServiceInvoker;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * email:pengju114@163.com
  * 时间:2012-9-20 16:45:21
  */
-public class XMLInvoker extends BaseServiceInvoker{
+public class XMLInvoker extends ServiceInvoker{
 
     private String resolverClassName;
     

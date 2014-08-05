@@ -5,8 +5,8 @@
 
 package com.pj.client.core;
 
-import com.pj.client.core.invokers.BaseServiceInvoker;
 import com.pj.utilities.StringUtility;
+import com.pj.web.res.Config;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
@@ -29,8 +29,19 @@ public class ServiceDispatcher {
         if (StringUtility.isEmpty(type)) {
             type="JSON";
         }
-        String pkg=BaseServiceInvoker.class.getPackage().getName();
-        String clazz=pkg+"."+type+"Invoker";
+        
+        String clazz = null;
+        
+        String invokerPattern = Config.getConfig(ServiceInvoker.CONF_CLASS_PATTERN, null);
+        if (StringUtility.isEmpty(invokerPattern)) {
+            String pkg=ServiceDispatcher.class.getPackage().getName();
+            clazz=pkg+".invokers."+type+"Invoker";
+        }else{
+            // 配置文件设置了模式
+            clazz = String.format(invokerPattern, type);
+        }
+        
+        
         try {
             Class<ServiceInvoker> invokerClass=(Class<ServiceInvoker>) Class.forName(clazz);
             ServiceInvoker invoker=invokerClass.newInstance();
