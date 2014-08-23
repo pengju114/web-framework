@@ -7,12 +7,6 @@ package com.pj.client.core.resolvers;
 
 import com.pj.client.core.ServiceResolver;
 import com.pj.client.core.ServiceResult;
-import com.pj.jdbc.core.ResultList;
-import com.pj.jdbc.core.ResultRow;
-import com.pj.jdbc.services.BaseService;
-import com.pj.jdbc.services.DebugService;
-import java.util.HashMap;
-import java.util.Map;
 import javax.servlet.http.Cookie;
 
 /**
