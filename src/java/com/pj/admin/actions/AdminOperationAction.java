@@ -24,6 +24,7 @@ public class AdminOperationAction extends BaseAction{
     
     private AdminUser admin;
     private String    roleList;
+    
     public  String addNewAdmin(){
         return listRoles();
     }
