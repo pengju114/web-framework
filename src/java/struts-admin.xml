@@ -18,11 +18,17 @@
         <action name="FindAdmin" method="findAdmin" class="com.pj.admin.actions.FindAdminAction">
             <result name="success">/admin/fn/admins.jsp</result>
         </action>
-        <action name="AddAdmins" method="listRoles" class="com.pj.admin.actions.AdminOperationAction">
-            <result name="success">/admin/fn/addAdmin.jsp</result>
+        <action name="AddAdmins" method="addNewAdmin" class="com.pj.admin.actions.AdminOperationAction">
+            <result name="success">/admin/fn/admins.jsp</result>
+            <result name="error">/admin/fn/error.jsp</result>
+            <result name="input">/admin/fn/addAdmin.jsp</result>
         </action>
         <action name="AddNewAdmin" method="addNewAdmin" class="com.pj.admin.actions.AdminOperationAction">
             <result name="success">/admin/fn/addAdmin.jsp</result>
+        </action>
+        
+        <action name="DeleteAdmin" method="deleteAdmin" class="com.pj.admin.actions.AdminOperationAction">
+            <result name="success">/admin/fn/admins.jsp</result>
         </action>
     </package>
 </struts>

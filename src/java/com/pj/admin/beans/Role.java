@@ -4,8 +4,11 @@
  */
 package com.pj.admin.beans;
 
+import com.pj.admin.services.AdminService;
 import com.pj.jdbc.annotation.Column;
 import com.pj.jdbc.annotation.Table;
+import com.pj.jdbc.core.ResultList;
+import java.util.List;
 
 /**
  *
@@ -88,5 +91,14 @@ public class Role {
 
     public Integer getLastModified() {
         return lastModified;
+    }
+    
+    public List<Authority> getAuthorities(){
+        AdminService service = new AdminService();
+        ResultList<Authority> list = service.getAuthoritiesByRoleId(getRoleId());
+        if (list != null) {
+            return list.toList();
+        }
+        return null;
     }
 }

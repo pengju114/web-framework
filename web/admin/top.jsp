@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>${cfg.appName}后台管理</title>
+        <title>${cfg.managementSystemName}</title>
         <style type="text/css">
             * { margin:0 auto; padding:0; border:0;}
             body { font:12px "宋体"; color:#FFF;}
@@ -51,7 +51,7 @@
                         <tr>
                             <td width="50%" height="28">
                                 <div class="lable">
-                                    <p>${cfg.appName}</p>
+                                    <p>${cfg.managementSystemName}</p>
                                 </div>
                             </td>
                             <td>

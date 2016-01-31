@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.pj.client.core.resolvers;
+package com.pj.admin.resolvers;
 
 import com.pj.client.core.ClientException;
 import com.pj.client.core.ServiceResolver;

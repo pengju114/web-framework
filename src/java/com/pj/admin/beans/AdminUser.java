@@ -7,7 +7,9 @@ package com.pj.admin.beans;
 import com.pj.admin.services.AdminService;
 import com.pj.jdbc.annotation.Column;
 import com.pj.jdbc.annotation.Table;
+import com.pj.jdbc.core.ResultList;
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -34,10 +36,6 @@ public class AdminUser {
     @Column(name = "create_date")
     private Date    createDate;
     
-    
-    // 额外数据
-    private String role;//角色
-    private Integer roleId;
 
     /**
      * @return the adminId
@@ -163,5 +161,19 @@ public class AdminUser {
      */
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+    
+    public List<Role> getRoles(){
+        AdminService service = new AdminService();
+        ResultList<Role> list = service.getRolesByAdminId(getAdminId());
+        if (list != null) {
+            return list.toList();
+        }
+        return null;
+    }
+    
+    public boolean hasAuthority(Authority authority){
+        AdminService service = new AdminService();
+        return service.hasAuthority(this, authority);
     }
 }

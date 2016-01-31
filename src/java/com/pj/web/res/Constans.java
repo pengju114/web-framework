@@ -14,4 +14,9 @@ public interface Constans {
         String VALIDATION_CODE="session.validation.code";
         String CURRENT_USER  ="session.current.user";
     }
+    
+    interface AuthorityKey{
+        /** 删除管理员权限唯一标示 */
+        String DELETE_ADMIN = "scgly";
+    }
 }

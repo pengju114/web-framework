@@ -4,7 +4,11 @@
     Author     : lzw
 --%>
 
+<%@page import="com.pj.admin.beans.Authority"%>
+<%@page import="com.pj.admin.beans.AdminUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,7 +34,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>&nbsp;</td>
+                            <td>
+                                ${error}
+                            </td>
                         </tr>
                     </table>
                 </td>

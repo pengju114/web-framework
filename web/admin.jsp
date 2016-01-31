@@ -83,19 +83,7 @@
                             </td>
                             <td>&nbsp;</td>
                         </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td valign="top">
-                                <div>
-                                    <div class="s-text" style="float:left;">
-                                        <input type="checkbox" style="padding:0px; margin:0px 4px 0px auto; cursor: pointer;" name="remenberMe" />记住密码
-                                    </div>
-                                    <div class="s-text" style="float:right;"></div>
-                                </div>
-                                <div style="clear:both;"></div>
-                            </td>
-                            <td>&nbsp;</td>
-                        </tr>
+                        
                         <tr>
                             <td>&nbsp;</td>
                             <td valign="top">
@@ -128,12 +116,8 @@
                                     window.onload=function(){ 
                                         var f=document.forms["login_form"];
                                         var n=Cookie.findCookie("name");
-                                        var p=Cookie.findCookie("pwd");
                                         if(n){
                                             f.userName.value=n.getValue();
-                                        }
-                                        if(p){
-                                            f.password.value=p.getValue();
                                         }
                                         changeValidationCode.call(pj("#random_image")[0]);
                                     };
@@ -145,12 +129,6 @@
                                         var nameCookie=new Cookie("name",name);
                                         nameCookie.setExpires(now);
                                         Cookie.store(nameCookie);
-                                        if(form.remenberMe.checked){
-                                            var pass=form.password.value;
-                                            var pwdCookie=new Cookie("pwd",pass);
-                                            pwdCookie.setExpires(now);
-                                            Cookie.store(pwdCookie);
-                                        }
                                         return true;    
                                     }});
                                     pj("#login_btn,#reset_btn").hover({"background":"url(${ pageContext.request.contextPath }/images/admin/login_btn_hover_bg.png) no-repeat center"});

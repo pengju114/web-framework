@@ -87,50 +87,38 @@ select * from t_role;
 
 insert into t_authority_role_mapping(
 	authority_id,
-    role_id    ,
-    role_key   ,
-    authority_key
+    role_id
 ) 
 values(
 	1,
-	1,
-	'cjgly',
-	'tjgly'
+	1
 );
 insert into t_authority_role_mapping(
 	authority_id,
-    role_id    ,
-    role_key   ,
-    authority_key
+    role_id   
 ) 
 values(
 	2,
-	1,
-	'cjgly',
-	'scgly'
+	1
 );
 select * from t_authority_role_mapping;
 
 insert into t_admin_role_mapping(
 	admin_id ,
-    role_id ,
-    role_key
+    role_id 
 )
 values(
 	2,
-	1,
-	'cjgly'
+	1
 );
 
 insert into t_admin_role_mapping(
 	admin_id ,
-    role_id ,
-    role_key
+    role_id 
 )
 values(
 	1,
-	1,
-	'cjgly'
+	1
 );
 
 select * from t_admin_role_mapping;

@@ -4,10 +4,12 @@
 <!-- 在代码中通过com.pj.web.res.Config.getConfig访问 -->
 <config>
     
-    <item name="pattern.service.invoker">com.pj.client.core.invokers.%sInvoker</item>
-    <item name="pattern.service.resolver">com.pj.client.core.resolvers.Resolver%s</item>
+    <item name="pattern.service.invoker">com.pj.%s.invokers.%sInvoker</item>
+    <item name="pattern.service.resolver">com.pj.%s.resolvers.Resolver%s</item>
     
     <item name="debug">true</item>
     <item name="appName">基础框架</item>
+    <item name="managementSystemName">基础管理系统</item>
     
 </config>
+

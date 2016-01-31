@@ -43,7 +43,6 @@ public class AdminLoginAction extends BaseAction {
         if (user!=null) {
             ServletActionContext.getRequest().getSession(true).setAttribute(Constans.Key.CURRENT_ADMIN, user);
             ServletActionContext.getRequest().getSession(true).setAttribute("admin", user);//方便访问
-            System.out.println(ServletActionContext.getRequest().getSession(true).getAttribute("admin"));
             return SUCCESS;
         }else{
             ServletActionContext.getRequest().setAttribute("error", "用户名或密码错误");

@@ -17,10 +17,10 @@ public class DebugService extends BaseService{
     }
     
     public ResultList<ResultRow> listAll(){
-        return getJdbcTemplate().list("WEB_TEST");
+        return getJdbcTemplate().list("t_admin");
     }
     
     public ResultList<ResultRow> listAll(int start,int length){
-        return getJdbcTemplate().list("WEB_TEST",start,length);
+        return getJdbcTemplate().list("t_admin",start,length);
     }
 }
