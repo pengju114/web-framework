@@ -33,7 +33,7 @@ public class AdminUser {
     private Integer sex;/*1 男；0女*/
     @Column(name = "admin_email")
     private String  email;
-    @Column(name = "create_date")
+    @Column(name = "admin_create_date")
     private Date    createDate;
     
 
@@ -175,5 +175,10 @@ public class AdminUser {
     public boolean hasAuthority(Authority authority){
         AdminService service = new AdminService();
         return service.hasAuthority(this, authority);
+    }
+    
+    public ResultList<Authority> getAuthorities(){
+        AdminService service = new AdminService();
+        return service.getAuthoritiesByAdminId(getAdminId());
     }
 }

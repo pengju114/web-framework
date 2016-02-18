@@ -99,7 +99,7 @@ public class AdminOperationAction extends BaseAction{
                 
             }else{
                 try {
-                    response.getWriter().write("FAIL");
+                    response.getWriter().write("删除失败！");
                 } catch (Exception e) {
                 }
             }

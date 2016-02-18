@@ -27,6 +27,7 @@ public class AdminService extends BaseService {
     public static final String ADMIN_ROLE_MAPPING_TABLE = "t_admin_role_mapping";
     public static final String AUTHORITY_TABLE = "t_authority";
     public static final String AUTHORITY_ROLE_MAPPING_TABLE = "t_authority_role_mapping";
+    public static final String AUTHORITY_DETAIL = "t_view_authority_detail";
     
     private static final Logger LOGGER=Logger.getLogger(AdminService.class.getName());
     
@@ -168,5 +169,10 @@ public class AdminService extends BaseService {
         sql = String.format("delete from %s where admin_id in (%s)", ADMIN_TABLE,ArrayUtility.join("?", adminIds.length, ","));
         ok = getJdbcTemplate().executeUpdate(sql, adminIds) > 0;
         return ok;
+    }
+
+    public ResultList<Authority> getAuthoritiesByAdminId(Integer adminId) {
+        String sql = "select distinct d.authority_id,d.authority_key,d.authority_name from t_view_authority_detail d where d.admin_id = ?";
+        return getJdbcTemplate().executeQuery(sql, new Object[]{adminId}, Authority.class);
     }
 }

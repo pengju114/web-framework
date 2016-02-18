@@ -54,7 +54,6 @@ public class FindAdminAction extends BaseAction {
         
         AdminService service = new AdminService();
         ServletActionContext.getRequest().setAttribute("admins", service.findAdminUserByName(adminName));
-        ServletActionContext.getRequest().setAttribute("authorities", service.listAuthorities());
         
         setDeleteAndModifyAuthority(getCurrentAdmin());
         
