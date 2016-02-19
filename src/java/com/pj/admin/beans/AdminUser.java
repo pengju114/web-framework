@@ -8,7 +8,7 @@ import com.pj.admin.services.AdminService;
 import com.pj.jdbc.annotation.Column;
 import com.pj.jdbc.annotation.Table;
 import com.pj.jdbc.core.ResultList;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 /**

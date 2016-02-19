@@ -18,5 +18,13 @@ public interface Constans {
     interface AuthorityKey{
         /** 删除管理员权限唯一标示 */
         String DELETE_ADMIN = "scgly";
+        /** 删除权限唯一标示 */
+        String DELETE_AUTHORITY = "scqx";
+        /** 添加权限唯一标示 */
+        String ADD_AUTHORITY = "tjqx";
+        /** 删除权限唯一标示 */
+        String DELETE_ROLE = "scjs";
+        /** 添加权限唯一标示 */
+        String ADD_ROLE = "tjjs";
     }
 }

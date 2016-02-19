@@ -30,5 +30,16 @@
         <action name="DeleteAdmin" method="deleteAdmin" class="com.pj.admin.actions.AdminOperationAction">
             <result name="success">/admin/fn/admins.jsp</result>
         </action>
+        
+        <action name="FindAuthority" method="findAuthority" class="com.pj.admin.actions.AuthorityAction">
+            <result name="success">/admin/fn/authority.jsp</result>
+        </action>
+        <action name="FindRole" method="findRoles" class="com.pj.admin.actions.RoleAction">
+            <result name="success">/admin/fn/role.jsp</result>
+        </action>
+        <action name="WantToAddRole" method="wantToAddRole" class="com.pj.admin.actions.RoleAction">
+            <result name="success">/admin/fn/addRole.jsp</result>
+        </action>
+        
     </package>
 </struts>

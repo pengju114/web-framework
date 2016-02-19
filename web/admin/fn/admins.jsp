@@ -85,7 +85,7 @@
                                                             <a class="delete_admin" aid="${each.adminId}" href="javascript:void(0)">删除</a>
                                                         </c:if>
                                                         <c:if test="${modify}">
-                                                            <a class="modify_admin" aid="${each.adminId}" href="javascript:void(0)">修改权限</a>
+                                                            <a class="modify_admin" aid="${each.adminId}" href="javascript:void(0)">修改角色</a>
                                                         </c:if>
                                                     </td>
                                                 </tr>
@@ -168,34 +168,34 @@
                                                 });
                                             });
                                             pj("a.modify_admin").click(function () {
-                                                if (pj.trim(this.innerHTML) == "修改权限") {
-                                                    this.innerHTML = "保存修改";
-                                                    pj("input.authority_" + this.getAttribute("aid")).each(function () {
-                                                        this.disabled = false;
-                                                    });
-                                                } else {
-                                                    this.innerHTML = "修改权限";
-                                                    if(window.confirm("是否要修改该管理员权限"))
-                                                    var id = this.getAttribute("aid"), auy = [];
-                                                    var box = pj("input.authority_" + id).each(function () {
-                                                        auy.push("\"" + this.getAttribute("name") + "\":" + this.checked);
-                                                    });
-                                                    alert(auy);
-                                                    ajax({url: "admin.modify", method: "POST", data: "id=" + id + "&authority={" + auy.join(",") + "}"}).getText(function (msg) {
-                                                        var dlg = new Dialog(null, "", true);
-                                                        if (msg == "OK") {
-                                                            dlg.setContent("修改成功");
-                                                            dlg.setAutoHideDelay(3000);
-                                                            dlg.show();
-                                                            box.each(function () {
-                                                                this.disabled = true;
-                                                            });
-                                                        } else {
-                                                            dlg.setContent(msg);
-                                                            dlg.show();
-                                                        }
-                                                    });
-                                                }
+//                                                if (pj.trim(this.innerHTML) == "修改") {
+//                                                    this.innerHTML = "保存修改";
+//                                                    pj("input.authority_" + this.getAttribute("aid")).each(function () {
+//                                                        this.disabled = false;
+//                                                    });
+//                                                } else {
+//                                                    this.innerHTML = "修改权限";
+//                                                    if(window.confirm("是否要修改该管理员权限"))
+//                                                    var id = this.getAttribute("aid"), auy = [];
+//                                                    var box = pj("input.authority_" + id).each(function () {
+//                                                        auy.push("\"" + this.getAttribute("name") + "\":" + this.checked);
+//                                                    });
+//                                                    alert(auy);
+//                                                    ajax({url: "admin.modify", method: "POST", data: "id=" + id + "&authority={" + auy.join(",") + "}"}).getText(function (msg) {
+//                                                        var dlg = new Dialog(null, "", true);
+//                                                        if (msg == "OK") {
+//                                                            dlg.setContent("修改成功");
+//                                                            dlg.setAutoHideDelay(3000);
+//                                                            dlg.show();
+//                                                            box.each(function () {
+//                                                                this.disabled = true;
+//                                                            });
+//                                                        } else {
+//                                                            dlg.setContent(msg);
+//                                                            dlg.show();
+//                                                        }
+//                                                    });
+//                                                }
                                             })
                                             </script>
                                         </c:if>

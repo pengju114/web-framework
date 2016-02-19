@@ -29,7 +29,7 @@ public class Authority {
     @Column(name = "last_modified_by")
     private Integer lastModifiedUserId;
     
-    @Column(name = "create_date")
+    @Column(name = "authority_create_date")
     private Date    createDate;
 
     /**

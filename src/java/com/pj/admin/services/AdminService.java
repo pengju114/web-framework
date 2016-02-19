@@ -96,16 +96,6 @@ public class AdminService extends BaseService {
         return getJdbcTemplate().executeQuery(sql, new Object[]{adminId}, Role.class);
     }
     
-    public ResultList<Authority> getAuthoritiesByRoleId(Integer roleId){
-        if (roleId == null) {
-            return null;
-        }
-        String sql = "select a.* from %s a,%s r, % m where a.authority_id = m.authority_id and r.role_id = m.role_id and r.role_id = ?";
-        sql = String.format(sql, AUTHORITY_TABLE,ROLE_TABLE,AUTHORITY_ROLE_MAPPING_TABLE);
-        
-        return getJdbcTemplate().executeQuery(sql, new Object[]{roleId}, Authority.class);
-    }
-    
     public boolean hasAuthorityByAuthorityKey(Integer adminUserId,String key){
         if (adminUserId == null || key == null) {
             return false;

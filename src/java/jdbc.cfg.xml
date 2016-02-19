@@ -3,9 +3,9 @@
 <datasource>
     <item name="default">
         <driver-class>com.mysql.jdbc.Driver</driver-class>
-        <url>jdbc:mysql://127.0.0.1:3306/db_web?characterEncoding=utf-8</url>
+        <url>jdbc:mysql://127.0.0.1:3306/webdb?characterEncoding=utf-8</url>
         <username>root</username>
-        <password>762354</password>
+        <password>root</password>
         <partition-count>3</partition-count>
         <max-connections-perpartition>50</max-connections-perpartition>
         <min-connections-perpartition>10</min-connections-perpartition>

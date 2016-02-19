@@ -4,7 +4,7 @@
  */
 package com.pj.admin.beans;
 
-import com.pj.admin.services.AdminService;
+import com.pj.admin.services.RoleService;
 import com.pj.jdbc.annotation.Column;
 import com.pj.jdbc.annotation.Table;
 import com.pj.jdbc.core.ResultList;
@@ -23,7 +23,7 @@ public class Role {
     private String roleName  ;
     
     @Column(name = "role_key")
-    private String rolekey   ;
+    private String roleKey   ;
     
     @Column(name = "role_level")
     private Integer roleLevel ; /** 权限级别 **/
@@ -53,13 +53,15 @@ public class Role {
         this.roleName = roleName;
     }
 
-    public void setRolekey(String rolekey) {
-        this.rolekey = rolekey;
+    public void setRoleKey(String roleKey) {
+        this.roleKey = roleKey;
     }
 
-    public String getRolekey() {
-        return rolekey;
+    public String getRoleKey() {
+        return roleKey;
     }
+
+    
 
     public void setRoleLevel(Integer roleLevel) {
         this.roleLevel = roleLevel;
@@ -94,7 +96,7 @@ public class Role {
     }
     
     public List<Authority> getAuthorities(){
-        AdminService service = new AdminService();
+        RoleService service = new RoleService();
         ResultList<Authority> list = service.getAuthoritiesByRoleId(getRoleId());
         if (list != null) {
             return list.toList();
