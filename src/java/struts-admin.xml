@@ -41,5 +41,9 @@
             <result name="success">/admin/fn/addRole.jsp</result>
         </action>
         
+        <action name="FindQA" method="findQA" class="com.pj.admin.actions.QAAction">
+            <result name="success">/admin/content/listQA.jsp</result>
+        </action>
+        
     </package>
 </struts>

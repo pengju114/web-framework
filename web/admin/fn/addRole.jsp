@@ -19,6 +19,7 @@
          <jsp:include page="base.jsp" flush="true" />
          <script type="text/javascript" src="${contextPath}/scripts/ajax.js"></script>
          <script type="text/javascript" src="${contextPath}/scripts/dialog.js"></script>
+         <link href="${contextPath}/css/dialog/pjdialog.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <table width="100%" cellpadding="0" cellspacing="0">
