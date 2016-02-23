@@ -38,7 +38,7 @@
                                     <input type="submit" value="搜索" />
                                 </form>
                                 <c:choose>
-                                    <c:when test="${not empty roles}">
+                                    <c:when test="${not empty qas}">
                                         <table width="100%" cellspacing="0" cellpadding="5" id="result">
                                             <tr>
                                                 <td class="gray_border" >&nbsp;&nbsp;</td>
@@ -60,7 +60,7 @@
                                             <c:forEach var="each" items="${qas}">
                                                 <tr>
                                                     <td class="gray_border"><input class="select" type="checkbox" name="id" value="${each.articleId}" /></td>
-                                                    <td class="gray_border">${each.articleTitle}</td>
+                                                    <td class="gray_border"><a href="<s:url action="ViewQA" namespace="/admin" />?id=${each.articleId}">${each.articleTitle}</a></td>
                                                     <td class="gray_border">${each.articleAbstract}</td>
                                                     <td class="gray_border">${each.articleKeywords}</td>
                                                     <td class="gray_border">
@@ -163,6 +163,23 @@
                 </td>
             </tr>
         </table>
+        <c:if test="${addQA}">
+            <script type="text/javascript">
+                <c:choose>
+                    <c:when test="${success}">
+                        var tip = "添加成功";
+                    </c:when>
+                    <c:otherwise>
+                        var tip = "添加失败";
+                        <c:if test="${ not empty tip}">tip += ",${tip}"</c:if>;
+                    </c:otherwise>
+                </c:choose>
+                var d = new Dialog("信息", tip, true);
+                d.autoHide(2000);
+                d.show();
+            </script>
+        </c:if>
+
     </body>
 
 </html>

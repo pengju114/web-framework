@@ -44,6 +44,16 @@
         <action name="FindQA" method="findQA" class="com.pj.admin.actions.QAAction">
             <result name="success">/admin/content/listQA.jsp</result>
         </action>
+        <action name="AddQA" method="addQA" class="com.pj.admin.actions.QAAction">
+            <result name="success">/admin/FindQA.action</result>
+        </action>
+        <action name="ViewQA" method="viewQA" class="com.pj.admin.actions.QAAction">
+            <result name="success">/admin/content/viewQA.jsp</result>
+        </action>
+        
+        <action name="UploadImage" method="uploadImage" class="com.pj.admin.actions.UploadAction">
+            <result name="success">/admin/content/uploadResult.jsp</result>
+        </action>
         
     </package>
 </struts>
