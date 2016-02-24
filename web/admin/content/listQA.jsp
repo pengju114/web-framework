@@ -99,16 +99,13 @@
                                                 });
                                                 if (ids.length <= 0)
                                                     return;
-                                                if (window.confirm("你确定要删除选中的管理员吗?") === true) {
+                                                if (window.confirm("你确定要删除选中的文章吗?") === true) {
 
-                                                    var statusDlg = new Dialog("提示", "正在删除...", true);
-                                                    statusDlg.show();
 
-                                                    ajax({url: "<s:url action="DeleteAdmin" namespace="/admin" />", method: "POST", data: "adminIds=" + ids.join("&adminIds=")}).getText(function (msg) {
+                                                    ajax({url: "<s:url action="DeleteQA" namespace="/admin" />", method: "POST", data: "qaIds=" + ids.join("&qaIds=")}).getScript(function (json) {
 
-                                                        statusDlg.close();
                                                         var dlg = new Dialog(null, "", true);
-                                                        if (msg === "OK") {
+                                                        if (json.status == 0) {
                                                             dlg.setContent("删除成功");
                                                             dlg.setAutoHideDelay(3000);
                                                             dlg.show();
@@ -117,7 +114,7 @@
                                                                 table.deleteRow(rows[j]);
                                                             }
                                                         } else {
-                                                            dlg.setContent(msg);
+                                                            dlg.setContent(json.message);
                                                             dlg.show();
                                                         }
                                                     });
@@ -126,7 +123,7 @@
 
                                             pj("a.delete_item").click(function () {
                                                 var row = -1, cur = this;
-                                                if (!window.confirm("确定要删除该管理员吗？")) {
+                                                if (!window.confirm("确定要删除该文章吗？")) {
                                                     return;
                                                 }
                                                 pj("a.delete_item").each(function (k) {
@@ -136,17 +133,13 @@
                                                     }
                                                 });
 
-                                                ajax({url: "<s:url action="DeleteQA" namespace="/admin" />", method: "POST", data: "qaIds=" + this.getAttribute("aid")}).getText(function (msg) {
-                                                    var dlg = new Dialog(null, "", true);
-                                                    if (msg == "OK") {
-                                                        dlg.setContent("删除成功");
+                                                ajax({url: "<s:url action="DeleteQA" namespace="/admin" />", method: "POST", data: "qaIds=" + this.getAttribute("aid")}).getScript(function (json) {
+                                                    var dlg = new Dialog("提示", json.message, true);
+                                                    if (json.status === 0) {
                                                         dlg.setAutoHideDelay(3000);
-                                                        dlg.show();
                                                         pj.id("result").deleteRow(row);
-                                                    } else {
-                                                        dlg.setContent(msg);
-                                                        dlg.show();
-                                                    }
+                                                    } 
+                                                    dlg.show();
                                                 });
                                             });
 

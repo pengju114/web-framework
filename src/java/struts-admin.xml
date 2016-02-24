@@ -50,6 +50,8 @@
         <action name="ViewQA" method="viewQA" class="com.pj.admin.actions.QAAction">
             <result name="success">/admin/content/viewQA.jsp</result>
         </action>
+        <action name="DeleteQA" method="deleteQA" class="com.pj.admin.actions.QAAction">
+        </action>
         
         <action name="UploadImage" method="uploadImage" class="com.pj.admin.actions.UploadAction">
             <result name="success">/admin/content/uploadResult.jsp</result>

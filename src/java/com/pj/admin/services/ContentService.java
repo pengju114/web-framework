@@ -8,6 +8,7 @@ package com.pj.admin.services;
 import com.pj.admin.beans.Article;
 import com.pj.jdbc.core.ResultList;
 import com.pj.jdbc.services.BaseService;
+import com.pj.utilities.ArrayUtility;
 import java.util.List;
 import org.apache.log4j.Logger;
 
@@ -42,6 +43,17 @@ public class ContentService extends BaseService{
     
     public int addQA(Article article){
         return getJdbcTemplate().save(article);
+    }
+    
+    public int deleteQAsByIds(Integer[] ids){
+        int c = 0;
+        try {
+            String sql = "delete from t_article where article_id in("+ArrayUtility.join("?", ids.length, ",")+")";
+            c = getJdbcTemplate().executeUpdate(sql, ids);
+        } catch (Exception e) {
+            Logger.getLogger(ContentService.class).error(e, e);
+        }
+        return c;
     }
     
     public Article findArticleById(Integer id){

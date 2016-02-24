@@ -66,6 +66,9 @@
         getScript:function(fn){
             return this.exe({"onSuccess":fn,"type":"js"});
         },
+        getJSON:function(fn){
+            return this.exe({"onSuccess":fn,"type":"js"});
+        },
         getHTML:function(fn){
             return this.exe({"onSuccess":fn,"type":"html"});
         },
@@ -88,7 +91,10 @@
                         cur[0].open(cur[1].method,cur[1].url,cur[1].async);
                         if(/POST/i.test(cur[1].method)){
                             cur[0].setRequestHeader("Content-Type","application/x-www-form-urlencoded");//表单编码
-                            if(cur[0].overrideMimeType)cur[0].setRequestHeader("Connection","close");
+                            try{
+                                // Chrome下会报错，但不影响执行
+                                if(cur[0].overrideMimeType)cur[0].setRequestHeader("Connection","close");
+                            }catch(ig){}
                         }
                     }catch(e){
                         throw new AjaxError(e.message);
