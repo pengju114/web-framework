@@ -6,6 +6,7 @@
 package com.pj.admin.services;
 
 import com.pj.admin.beans.Article;
+import com.pj.admin.beans.Attachment;
 import com.pj.jdbc.core.ResultList;
 import com.pj.jdbc.services.BaseService;
 import com.pj.utilities.ArrayUtility;
@@ -64,5 +65,34 @@ public class ContentService extends BaseService{
             Logger.getLogger(ContentService.class).error(e, e);
         }
         return article;
+    }
+    
+    public List<Attachment> findPkgs(String name,Integer type){
+        String sql = "select * from t_attachment where (attachment_name like ? or attachment_description like ?)";
+        Object[] vals = null;
+        String label = "%"+name+"%";
+        if (type > 0) {
+            sql += " and attachment_type = ?";
+            vals = new Object[]{label,label,type};
+        }else{
+            vals = new Object[]{label,label};
+        }
+        ResultList<Attachment> rs = getJdbcTemplate().executeQuery(sql, vals, Attachment.class);
+        return rs == null?null:rs.toList();
+    }
+    
+    public List<Attachment> listPkgs(Integer type){
+        String sql = "select * from t_attachment";
+        Object[] vals = null;
+        if (type > 0) {
+            sql += " where attachment_type = ?";
+            vals = new Object[]{type};
+        }
+        ResultList<Attachment> rs = getJdbcTemplate().executeQuery(sql, vals, Attachment.class);
+        return rs == null?null:rs.toList();
+    }
+    
+    public int addPkgs(Attachment pkg){
+        return getJdbcTemplate().save(pkg);
     }
 }

@@ -34,7 +34,7 @@
                         <tr>
                             <td>
 
-                                <form style="margin-top: 12px;" action="<s:url action="AddQA" namespace="admin" />" method="post" name="add_qa" target="I2">
+                                <form style="margin-top: 12px;" action="<s:url action="AddQA" namespace="/content" />" method="post" name="add_qa" target="I2">
 
                                     <table width="100%" cellspacing="0" cellpadding="5" id="result">
                                         <tr>
@@ -100,7 +100,7 @@
                 file_picker_types: 'image',
                 document_base_url: "/",
                 convert_urls: false,
-                images_upload_url: '<s:url action="UploadImage" namespace="/admin" />',
+                images_upload_url: '<s:url action="UploadImage" namespace="/content" />',
                 language: "zh_CN",
                 file_browser_callback: function (field_name, url, type, win) {
                     win.document.getElementById(field_name).value = "正在上传图片...";
@@ -135,7 +135,7 @@
         </script>
         
         <iframe src="#" name="insideFrame"  style="margin: 0px; padding: 0px; visibility: hidden; position: absolute; "></iframe>
-        <form style="margin: 0px; padding: 0px; visibility: hidden; position: absolute; " enctype="multipart/form-data" method="POST" name="upload_image" action="<s:url action="UploadImage" namespace="/admin" />" target="insideFrame">
+        <form style="margin: 0px; padding: 0px; visibility: hidden; position: absolute; " enctype="multipart/form-data" method="POST" name="upload_image" action="<s:url action="UploadImage" namespace="/content" />" target="insideFrame">
             <input type="file" id="fileButton" name="image" value="" />
             <input type="submit" value="提交" id="fileSubmit" /> 
         </form>

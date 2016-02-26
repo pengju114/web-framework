@@ -60,7 +60,7 @@
                                             <c:forEach var="each" items="${qas}">
                                                 <tr>
                                                     <td class="gray_border"><input class="select" type="checkbox" name="id" value="${each.articleId}" /></td>
-                                                    <td class="gray_border"><a href="<s:url action="ViewQA" namespace="/admin" />?id=${each.articleId}">${each.articleTitle}</a></td>
+                                                    <td class="gray_border"><a href="<s:url action="ViewQA" namespace="/content" />?id=${each.articleId}">${each.articleTitle}</a></td>
                                                     <td class="gray_border">${each.articleAbstract}</td>
                                                     <td class="gray_border">${each.articleKeywords}</td>
                                                     <td class="gray_border">
@@ -102,21 +102,20 @@
                                                 if (window.confirm("你确定要删除选中的文章吗?") === true) {
 
 
-                                                    ajax({url: "<s:url action="DeleteQA" namespace="/admin" />", method: "POST", data: "qaIds=" + ids.join("&qaIds=")}).getScript(function (json) {
+                                                    ajax({url: "<s:url action="DeleteQA" namespace="/content" />", method: "POST", data: "qaIds=" + ids.join("&qaIds=")}).getScript(function (json) {
 
-                                                        var dlg = new Dialog(null, "", true);
+                                                        var dlg = new Dialog("提示", json.message, true);
                                                         if (json.status == 0) {
-                                                            dlg.setContent("删除成功");
-                                                            dlg.setAutoHideDelay(3000);
-                                                            dlg.show();
+                                                            dlg.autoHide(2000);
                                                             var table = pj.id("result");
                                                             for (var j = rows.length - 1; j >= 0; j--) {
                                                                 table.deleteRow(rows[j]);
                                                             }
                                                         } else {
-                                                            dlg.setContent(json.message);
                                                             dlg.show();
                                                         }
+                                                        
+                                                        dlg.show();
                                                     });
                                                 }
                                             });
@@ -133,10 +132,10 @@
                                                     }
                                                 });
 
-                                                ajax({url: "<s:url action="DeleteQA" namespace="/admin" />", method: "POST", data: "qaIds=" + this.getAttribute("aid")}).getScript(function (json) {
+                                                ajax({url: "<s:url action="DeleteQA" namespace="/content" />", method: "POST", data: "qaIds=" + this.getAttribute("aid")}).getScript(function (json) {
                                                     var dlg = new Dialog("提示", json.message, true);
                                                     if (json.status === 0) {
-                                                        dlg.setAutoHideDelay(3000);
+                                                        dlg.autoHide(2000);
                                                         pj.id("result").deleteRow(row);
                                                     } 
                                                     dlg.show();

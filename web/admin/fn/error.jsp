@@ -1,11 +1,3 @@
-<%-- 
-    Document   : role
-    Created on : Mar 30, 2014, 10:35:16 PM
-    Author     : lzw
---%>
-
-<%@page import="com.pj.admin.beans.Authority"%>
-<%@page import="com.pj.admin.beans.AdminUser"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
@@ -36,6 +28,8 @@
                         <tr>
                             <td>
                                 ${error}
+                                <br />
+                                ${exception}
                             </td>
                         </tr>
                     </table>
