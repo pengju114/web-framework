@@ -82,7 +82,7 @@
                                     <div class="item">
                                         <ul>
                                             <li><a target="I2" href="<s:url action="FindQA" namespace="/content" />">添加常见QA</a></li>
-                                            <li><a target="I2" href="javascript:void(0)">上传App和功能包</a></li>
+                                            <li><a target="I2" href="<s:url action="FindPkg" namespace="/content" />">上传App和功能包</a></li>
                                             <li><a target="I2" href="javascript:void(0)">查看检测结果</a></li>
                                             <li><a target="I2" href="javascript:void(0)">查看手机兼容列表</a></li>
                                         </ul>

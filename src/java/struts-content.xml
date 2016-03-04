@@ -25,6 +25,11 @@
         <action name="FindPkg" method="findPkg" class="com.pj.admin.actions.PkgAction">
             <result name="success">/admin/content/listPkg.jsp</result>
         </action>
+        <action name="AddPkg" method="addPkg" class="com.pj.admin.actions.PkgAction">
+            <result name="success">/admin/content/listPkg.jsp</result>
+            <result name="input">/admin/content/addPkg.jsp</result>
+        </action>
+        
         
     </package>
 </struts>

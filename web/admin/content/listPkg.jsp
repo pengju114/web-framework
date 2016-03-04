@@ -22,7 +22,7 @@
                                 <table width="100%" class="top" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>
-                                            <a style="float: right; margin: 0px 12px 0 0;" href="${contextPath}/admin/content/addQA.jsp">+添加常见问题</a>
+                                            <a style="float: right; margin: 0px 12px 0 0;" href="<s:url action="AddPkg" namespace="/content" />">+上传文件</a>
                                             当前位置:&nbsp;<a id="nav_title" href="javascript:void(0)"></a>&nbsp;>>&nbsp;
                                             <a id="nav_cat" href="javascript:void(0)"></a>
                                         </td>
@@ -33,12 +33,19 @@
                         <tr>
                             <td>
 
-                                <form style="margin-top: 12px;" action="<s:url action="FindQA" namespace="/admin" />" method="post" name="find_qa" target="I2">
-                                    请输入标题:<input onfocus="this.select()" type="text" size="20" maxlength="100" name="title" value="${title}" />
+                                <form style="margin-top: 12px;" action="<s:url action="FindPkg" namespace="/content" />" method="post" name="find_pkg" target="I2">
+                                    文件类型:
+                                    <select name="type">
+                                        <c:forEach items="${types}" var="type">
+                                            <option value="${type}">${type}</option>
+                                        </c:forEach>
+                                    </select>
+                                    请输入文件名:
+                                    <input onfocus="this.select()" type="text" size="20" maxlength="100" name="title" value="${title}" />
                                     <input type="submit" value="搜索" />
                                 </form>
                                 <c:choose>
-                                    <c:when test="${not empty qas}">
+                                    <c:when test="${not empty pkgs}">
                                         <table width="100%" cellspacing="0" cellpadding="5" id="result">
                                             <tr>
                                                 <td class="gray_border" >&nbsp;&nbsp;</td>
@@ -57,7 +64,7 @@
 
                                                 </td>
                                             </tr>
-                                            <c:forEach var="each" items="${qas}">
+                                            <c:forEach var="each" items="${pkgs}">
                                                 <tr>
                                                     <td class="gray_border"><input class="select" type="checkbox" name="id" value="${each.articleId}" /></td>
                                                     <td class="gray_border"><a href="<s:url action="ViewQA" namespace="/content" />?id=${each.articleId}">${each.articleTitle}</a></td>

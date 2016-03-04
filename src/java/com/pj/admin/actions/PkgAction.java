@@ -6,8 +6,10 @@
 package com.pj.admin.actions;
 
 import com.pj.actions.BaseAction;
+import com.pj.admin.beans.Attachment;
 import com.pj.admin.services.ContentService;
 import com.pj.utilities.StringUtility;
+import java.io.File;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 
@@ -16,6 +18,8 @@ import org.apache.struts2.ServletActionContext;
  * @author luzhenwen
  */
 public class PkgAction extends BaseAction {
+
+    
     
     public static enum PKG_TYPE {
         ALL(-1),
@@ -36,7 +40,7 @@ public class PkgAction extends BaseAction {
     private String type;
     private String name;
 
-    public String findApk() {
+    public String findPkg() {
         HttpServletRequest request = ServletActionContext.getRequest();
         request.setAttribute("types", PKG_TYPE.values());
         PKG_TYPE etype = PKG_TYPE.ALL;
@@ -78,4 +82,73 @@ public class PkgAction extends BaseAction {
     }
     
     
+    private Attachment pkg;
+    private File pkgFile;
+    private String pkgFileFileName;
+    private String pkgFileContentType;
+    public String addPkg(){
+        if (getPkg() == null) {
+            ServletActionContext.getRequest().setAttribute("types", PKG_TYPE.values());
+            return INPUT;
+        }else{
+            
+        }
+        return SUCCESS;
+    }
+    
+    /**
+     * @return the pkg
+     */
+    public Attachment getPkg() {
+        return pkg;
+    }
+
+    /**
+     * @param pkg the pkg to set
+     */
+    public void setPkg(Attachment pkg) {
+        this.pkg = pkg;
+    }
+
+    /**
+     * @return the pkgFile
+     */
+    public File getPkgFile() {
+        return pkgFile;
+    }
+
+    /**
+     * @param pkgFile the pkgFile to set
+     */
+    public void setPkgFile(File pkgFile) {
+        this.pkgFile = pkgFile;
+    }
+
+    /**
+     * @return the pkgFileFileName
+     */
+    public String getPkgFileFileName() {
+        return pkgFileFileName;
+    }
+
+    /**
+     * @param pkgFileFileName the pkgFileFileName to set
+     */
+    public void setPkgFileFileName(String pkgFileFileName) {
+        this.pkgFileFileName = pkgFileFileName;
+    }
+
+    /**
+     * @return the pkgFileContentType
+     */
+    public String getPkgFileContentType() {
+        return pkgFileContentType;
+    }
+
+    /**
+     * @param pkgFileContentType the pkgFileContentType to set
+     */
+    public void setPkgFileContentType(String pkgFileContentType) {
+        this.pkgFileContentType = pkgFileContentType;
+    }
 }
