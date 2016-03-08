@@ -76,7 +76,7 @@
                                             <td class="btd" valign="top">角色：</td>
                                             <td class="btd">
                                                 <c:forEach var="r" items="${roles}">
-                                                    <input type="checkbox" name="roleList" value="${r.roleId}_${r.rolekey}" />${r.roleName} &nbsp;
+                                                    <input type="checkbox" name="roleList" value="${r.roleId}_${r.roleKey}" />${r.roleName} &nbsp;
                                                 </c:forEach>
                                                 <%--
                                                 <span id="roles" style="float: left;">

@@ -95,4 +95,16 @@ public class ContentService extends BaseService{
     public int addPkgs(Attachment pkg){
         return getJdbcTemplate().save(pkg);
     }
+    
+    public List<Attachment> deletePkgs(Integer[] ids){
+        String quySql = "select * from t_attachment where attachment_id in(%s)";
+        String delSql = "delete from t_attachment where attachment_id in(%s)";
+        String qus = ArrayUtility.join("?", ids.length, ",");
+        quySql = String.format(quySql, qus);
+        delSql = String.format(delSql, qus);
+        
+        ResultList<Attachment> attachments = getJdbcTemplate().executeQuery(quySql, ids, Attachment.class);
+        int c = getJdbcTemplate().executeUpdate(delSql, ids);
+        return attachments == null?null:attachments.toList();
+    }
 }

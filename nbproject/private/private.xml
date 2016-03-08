@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/actions/BaseAction.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/jdbc.cfg.xml</file>
             <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/beans/Role.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/services/RoleService.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/actions/FindAdminAction.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/struts-admin.xml</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/actions/RoleAction.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/web/admin/fn/addRole.jsp</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/beans/Authority.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/actions/AuthorityAction.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/web/admin/fn/role.jsp</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/actions/AdminOperationAction.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/web/admin/fn/authority.jsp</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/web/res/Constans.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/web/admin/fn/admins.jsp</file>
+            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/actions/PkgAction.java</file>
+            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/web/admin/fn/addAdmin.jsp</file>
+            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/web/WEB-INF/web.xml</file>
+            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/clientDataFormat.txt</file>
         </group>
     </open-files>
 </project-private>

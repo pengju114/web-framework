@@ -8,6 +8,7 @@
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <constant name="struts.devMode" value="false" />
     <constant name="struts.multipart.saveDir" value="tmp" />
+    <constant name="struts.multipart.maxSize" value="31457280" /><!-- 30M -->
     
     <!--  -->
     <include file="struts-admin.xml"/>

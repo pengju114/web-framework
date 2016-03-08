@@ -49,9 +49,10 @@
                                         <table width="100%" cellspacing="0" cellpadding="5" id="result">
                                             <tr>
                                                 <td class="gray_border" >&nbsp;&nbsp;</td>
-                                                <td class="gray_border">标题</td>
-                                                <td class="gray_border">摘要</td>
-                                                <td class="gray_border">关键字</td>
+                                                <td class="gray_border">类型</td>
+                                                <td class="gray_border">名字</td>
+                                                <td class="gray_border">版本名|版本号</td>
+                                                <td class="gray_border">描述</td>
                                                 <td class="gray_border">最后修改</td>
                                                 <td class="gray_border">
 
@@ -66,15 +67,16 @@
                                             </tr>
                                             <c:forEach var="each" items="${pkgs}">
                                                 <tr>
-                                                    <td class="gray_border"><input class="select" type="checkbox" name="id" value="${each.articleId}" /></td>
-                                                    <td class="gray_border"><a href="<s:url action="ViewQA" namespace="/content" />?id=${each.articleId}">${each.articleTitle}</a></td>
-                                                    <td class="gray_border">${each.articleAbstract}</td>
-                                                    <td class="gray_border">${each.articleKeywords}</td>
+                                                    <td class="gray_border"><input class="select" type="checkbox" name="id" value="${each.attachmentId}" /></td>
+                                                    <td class="gray_border"></td>
+                                                    <td class="gray_border">${each.attachmentName}</td>
+                                                    <td class="gray_border">${each.attachmentKeywords}</td>
+                                                    <td class="gray_border">${each.attachmentDescription}</td>
                                                     <td class="gray_border">
-                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${each.articleLastModifyDate}"></fmt:formatDate>
+                                                        <fmt:formatDate pattern="yyyy-MM-dd" value="${each.attachmentCreateDate}"></fmt:formatDate>
                                                         </td>
                                                         <td class="gray_border">
-                                                            <a class="delete_item" aid="${each.articleId}" href="javascript:void(0)">删除</a>
+                                                            <a class="delete_item" aid="${each.attachmentId}" href="javascript:void(0)">删除</a>
                                                     </td>
                                                 </tr>
                                             </c:forEach>
@@ -106,10 +108,10 @@
                                                 });
                                                 if (ids.length <= 0)
                                                     return;
-                                                if (window.confirm("你确定要删除选中的文章吗?") === true) {
+                                                if (window.confirm("你确定要删除选中的文件吗?") === true) {
 
 
-                                                    ajax({url: "<s:url action="DeleteQA" namespace="/content" />", method: "POST", data: "qaIds=" + ids.join("&qaIds=")}).getScript(function (json) {
+                                                    ajax({url: "<s:url action="DeletePkg" namespace="/content" />", method: "POST", data: "id=" + ids.join("&id=")}).getScript(function (json) {
 
                                                         var dlg = new Dialog("提示", json.message, true);
                                                         if (json.status == 0) {
@@ -129,7 +131,7 @@
 
                                             pj("a.delete_item").click(function () {
                                                 var row = -1, cur = this;
-                                                if (!window.confirm("确定要删除该文章吗？")) {
+                                                if (!window.confirm("确定要删除该文件吗？")) {
                                                     return;
                                                 }
                                                 pj("a.delete_item").each(function (k) {
@@ -139,7 +141,7 @@
                                                     }
                                                 });
 
-                                                ajax({url: "<s:url action="DeleteQA" namespace="/content" />", method: "POST", data: "qaIds=" + this.getAttribute("aid")}).getScript(function (json) {
+                                                ajax({url: "<s:url action="DeletePkg" namespace="/content" />", method: "POST", data: "id=" + this.getAttribute("aid")}).getScript(function (json) {
                                                     var dlg = new Dialog("提示", json.message, true);
                                                     if (json.status === 0) {
                                                         dlg.autoHide(2000);
