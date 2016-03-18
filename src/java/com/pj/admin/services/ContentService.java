@@ -10,7 +10,9 @@ import com.pj.admin.beans.Attachment;
 import com.pj.jdbc.core.ResultList;
 import com.pj.jdbc.services.BaseService;
 import com.pj.utilities.ArrayUtility;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 /**
@@ -79,6 +81,16 @@ public class ContentService extends BaseService{
         }
         ResultList<Attachment> rs = getJdbcTemplate().executeQuery(sql, vals, Attachment.class);
         return rs == null?null:rs.toList();
+    }
+    
+    public Attachment findPkgById(Integer id){
+        String sql = "select * from t_attachment where attachment_id = ?";
+        try {
+            return getJdbcTemplate().querySingle(sql, new Object[]{id}, Attachment.class);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(ContentService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public List<Attachment> listPkgs(Integer type){

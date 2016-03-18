@@ -3,9 +3,10 @@
 <!-- 配置文件，在页面中所有配置都可以通过${cfg.attr}访问 -->
 <!-- 在代码中通过com.pj.web.res.Config.getConfig访问 -->
 <config>
-    
-    <item name="pattern.service.invoker">com.pj.%s.invokers.%sInvoker</item>
-    <item name="pattern.service.resolver">com.pj.%s.resolvers.Resolver%s</item>
+    <!-- 第一个%s将替换module字段，第二个%s将替换dataType字段 -->
+    <item name="pattern.service.invoker">com.es.keyassistant.%s.invokers.%sInvoker</item>
+    <!-- 第一个%s将替换module字段，第二个%s将替换service字段 -->
+    <item name="pattern.service.resolver">com.es.keyassistant.%s.resolvers.Resolver%s</item>
     
     <item name="debug">true</item>
     <item name="appName">基础框架</item>
