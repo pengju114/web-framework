@@ -4,7 +4,7 @@
     <display-name>et</display-name>
     <tlib-version>1.2</tlib-version>
     <short-name>pj</short-name>
-    <uri>http://pengju/tag</uri>
+    <uri>/pj/tag</uri>
 
   <!-- param 标签 -->
     <tag>
@@ -12,7 +12,7 @@
         参数标签
         </description>
         <name>param</name>
-        <tag-class>pj.custom.tags.ParamTag</tag-class>
+        <tag-class>com.pj.web.jsptag.ParamTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <description>
@@ -44,7 +44,7 @@
         则field将被替换为 user.team.demo.attr,然后取值
         </description>
         <name>property</name>
-        <tag-class>pj.custom.tags.PropertyTag</tag-class>
+        <tag-class>com.pj.web.jsptag.PropertyTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <description>
@@ -69,7 +69,7 @@
         将request数据封装到指定对象中
         </description>
         <name>filter</name>
-        <tag-class>pj.custom.tags.FilterTag</tag-class>
+        <tag-class>com.pj.web.jsptag.FilterTag</tag-class>
         <body-content>empty</body-content>
         <attribute>
             <description>
@@ -116,7 +116,7 @@
         则field将被替换为 user.team.demo.method,然后调用method[类方法或对象方法]
         </description>
         <name>invoke</name>
-        <tag-class>pj.custom.tags.InvokeTag</tag-class>
+        <tag-class>com.pj.web.jsptag.InvokeTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <description>
@@ -135,4 +135,76 @@
             <rtexprvalue>false</rtexprvalue>
         </attribute>
     </tag>
+    
+    <!--  分页标签  -->
+    <description>
+        分页标签.用此标签会输出一个table,table中是一系列分页按钮.
+        </description>
+        <name>paging</name>
+        <tag-class>com.pj.web.jsptag.Paging</tag-class>
+        <body-content>JSP</body-content>
+        <attribute>
+            <description>
+            每页显示的记录数,默认为10.如果实际的每页记录数与此值不相等,则可能分页会错乱.
+            </description>
+            <name>pageSize</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            记录总数
+            </description>
+            <name>totalResults</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            当前页
+            </description>
+            <name>currentPage</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            点击指定页要连接到的目标页的URL,相对于当前页.此项和inputForm必须设置一个.
+            </description>
+            <name>link</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            指定要显示页码按钮的个数,默认为9个.
+            </description>
+            <name>buttonCount</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            是否使用下拉列表,默认为false.
+            </description>
+            <name>useSelectList</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            就是附加到URL后面的参数名,可通过request.getParameter(parameterName)取得当前页.
+            </description>
+            <name>parameterName</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <description>
+            如果设置了此项则在点击链接的时候会提交制定名字的表单而不是跳到指定页,参数比较多时推荐使用.
+            </description>
+            <name>inputForm</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
 </taglib>
