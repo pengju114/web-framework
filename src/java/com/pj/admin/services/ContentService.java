@@ -5,6 +5,7 @@
  */
 package com.pj.admin.services;
 
+import com.es.keyassistant.beans.DetectionInfo;
 import com.pj.admin.beans.Article;
 import com.pj.admin.beans.Attachment;
 import com.pj.jdbc.core.ResultList;
@@ -28,14 +29,14 @@ public class ContentService extends BaseService{
      * @param pageSize
      * @return 
      */
-    public List<Article> findQAByTitle(String title, int pageNumber,int pageSize){
+    public ResultList<Article> findQAByTitle(String title, int pageNumber,int pageSize){
         if (title == null) {
             title = "";
         }
         String sql = "select * from t_article where (article_status is null or article_status = 0) and article_title like ? order by article_id desc";
         String param = "%"+title+"%";
-        ResultList<Article> rs = getJdbcTemplate().executeQuery(sql, new Object[]{param}, pageNumber, pageSize, Article.class);
-        return rs == null?null:rs.toList();
+        ResultList<Article> rs = getJdbcTemplate().executeQuery(sql, new Object[]{param}, pageNumber-1, pageSize, Article.class);
+        return rs;
     }
     
     public List<Article> listQA(int pageNumber,int pageSize){
@@ -118,5 +119,19 @@ public class ContentService extends BaseService{
         ResultList<Attachment> attachments = getJdbcTemplate().executeQuery(quySql, ids, Attachment.class);
         int c = getJdbcTemplate().executeUpdate(delSql, ids);
         return attachments == null?null:attachments.toList();
+    }
+    
+    public Attachment findLatestPkgByType(Integer type){
+        String quySql = "select * from t_attachment where attachment_type = ? and attachment_level = (select max(b.attachment_level) from t_attachment b where b.attachment_type = ?)";
+        try {
+            return getJdbcTemplate().querySingle(quySql, new Object[]{type,type}, Attachment.class);
+        } catch (SQLException ex) {
+            java.util.logging.Logger.getLogger(ContentService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public int addDetectionInfo(DetectionInfo info){
+        return getJdbcTemplate().save(info);
     }
 }

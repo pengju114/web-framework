@@ -12,13 +12,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *
  * @author luzhenwen
  */
 public class FileInvoker extends AuthenticationInvoker{
-    private static final String STREAM_TYPE = "application/otet-stream";
+    private static final String STREAM_TYPE = "application/octet-stream";
     
     private String contentType = STREAM_TYPE;
 
@@ -33,8 +34,7 @@ public class FileInvoker extends AuthenticationInvoker{
         Map<String,Object> header = (Map<String,Object>) rMap.get(KEY_HEADER);
         Number status = (Number) header.get(KEY_HEADER_STATUS_CODE);
         if (status.intValue() != ClientException.REQUEST_OK) {
-            contentType = super.getContentType();
-            super.writeResult(writer, rMap);
+            getResponse().sendError(HttpServletResponse.SC_NOT_FOUND, (String)header.get(KEY_HEADER_STATUS_TEXT));
             return;
         }
         contentType = STREAM_TYPE;
@@ -52,6 +52,8 @@ public class FileInvoker extends AuthenticationInvoker{
                     LOGGER.info("下载文件:"+path);
                     downloadFile(path);
                     break;
+                }else{
+                    getResponse().sendError(HttpServletResponse.SC_NOT_FOUND);
                 }
             }
         }

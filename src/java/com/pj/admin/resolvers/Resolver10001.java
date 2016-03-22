@@ -26,7 +26,7 @@ public class Resolver10001 extends ServiceResolver{
         DebugService service = new DebugService();
         ResultList<ResultRow> dataList = service.listAll((getPageNumber()-1)*getPageSize(),getPageSize());
         result.getData().addAll(dataList.toList());
-        caculatePageProperties(dataList.getTotalRowsCount(),result);
+        calculatePageProperties(dataList.getTotalRowsCount(),result);
         getRequest().getSession(true).getAttribute("");
         return result;
     }

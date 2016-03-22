@@ -1,0 +1,42 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.es.keyassistant.resolvers;
+
+import com.pj.admin.beans.Article;
+import com.pj.admin.beans.Attachment;
+import com.pj.admin.services.ContentService;
+import com.pj.client.core.ServiceResult;
+import com.pj.jdbc.core.ResultList;
+import java.util.Map;
+
+/**
+ * 查询最新检测包
+ * @author luzhenwen
+ */
+public class Resolver0002 extends BaseResolver{
+
+    @Override
+    public ServiceResult execute() throws Exception {
+        Integer type = getIntParameter("type");
+        ContentService service = new ContentService();
+        Attachment attachment = service.findLatestPkgByType(type);
+        ServiceResult result = new ServiceResult();
+        if (attachment != null) {
+            
+            Map<String,Object> e = makeMapByKeyAndValues(
+                    "lastestVersion",attachment.getAttachmentLevel(),/*最新检测包版本*/
+                    "updateTime",attachment.getAttachmentCreateDate(),/*更新时间*/
+                    "versionInfo",attachment.getAttachmentDescription(),
+                    "fileId",attachment.getAttachmentId()
+            );
+                
+            result.getData().add(e);
+        }
+               
+        return result;
+    }
+    
+}

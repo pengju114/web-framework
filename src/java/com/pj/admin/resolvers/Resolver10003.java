@@ -26,7 +26,7 @@ public class Resolver10003 extends ServiceResolver{
         Cookie c = new Cookie("tmp", "haha");
         c.setMaxAge(1024);
         getResponse().addCookie(c);
-        caculatePageProperties(0,result);
+        calculatePageProperties(0,result);
         return result;
     }
 }

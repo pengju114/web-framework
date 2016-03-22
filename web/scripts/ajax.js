@@ -198,7 +198,7 @@
             p.url=append(p.url,p.data);
         }
         if(!p.cache){
-            p.url=append(p.url,"abkjfjk="+(new Date().getTime())+"jrejhjdd");
+            p.url=append(p.url,"ajaxtimestamp="+(new Date().getTime()));
         }
     };
 			 

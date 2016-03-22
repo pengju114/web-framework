@@ -164,10 +164,10 @@ public class PkgAction extends BaseAction {
                     Attachment attachment = new Attachment();
                     
                     attachment.setAttachmentCreateDate(new Date());
-                    if (!StringUtility.isEmpty(pkgInfo.description)) {
-                        attachment.setAttachmentDescription(pkgInfo.description);
-                    }else{
+                    if (!StringUtility.isEmpty(description)) {
                         attachment.setAttachmentDescription(description);
+                    }else{
+                        attachment.setAttachmentDescription(pkgInfo.description);
                     }
                     
                     attachment.setAttachmentFileName(pkgFileFileName);

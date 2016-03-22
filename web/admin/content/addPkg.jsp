@@ -49,7 +49,7 @@
                                         <tr id="des-row">
                                             <td class="gray_border" >文件描述</td>
                                             <td class="gray_border">
-                                                <input alt="文件描述" title="请输入文件描述" name="description" type="text" />
+                                                <textarea cols="48" rows="5" alt="文件描述" title="请输入文件描述" name="description"></textarea>
                                             </td>
                                         </tr>
 

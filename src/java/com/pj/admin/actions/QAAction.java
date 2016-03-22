@@ -8,6 +8,7 @@ package com.pj.admin.actions;
 import com.pj.actions.BaseAction;
 import com.pj.admin.beans.Article;
 import com.pj.admin.services.ContentService;
+import com.pj.jdbc.core.ResultList;
 import com.pj.json.JSONObject;
 import com.pj.utilities.ConvertUtility;
 import com.pj.utilities.StringUtility;
@@ -30,7 +31,7 @@ public class QAAction extends BaseAction {
         } else {
             ContentService service = new ContentService();
             HttpServletRequest request = ServletActionContext.getRequest();
-            List<Article> list = service.findQAByTitle(title, ConvertUtility.parseInt(request.getParameter("pageNumber"), 1) - 1, ConvertUtility.parseInt(request.getParameter("pageSize"), Integer.MAX_VALUE));
+            ResultList<Article> list = service.findQAByTitle(title, ConvertUtility.parseInt(request.getParameter("pageNumber"), 1) - 1, ConvertUtility.parseInt(request.getParameter("pageSize"), Integer.MAX_VALUE));
             request.setAttribute("qas", list);
             request.setAttribute("title", title);
             return SUCCESS;

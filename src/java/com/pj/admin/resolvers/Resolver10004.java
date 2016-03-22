@@ -27,7 +27,7 @@ public class Resolver10004 extends ServiceResolver{
         HashMap<String,Object> map = new HashMap<String, Object>();
         map.put("name", getRequest().getSession(true).getAttribute("user"));
         result.getData().add(map);
-        caculatePageProperties(1,result);
+        calculatePageProperties(1,result);
         return result;
     }
 }
