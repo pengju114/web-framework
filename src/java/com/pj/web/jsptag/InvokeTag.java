@@ -1,6 +1,7 @@
 package com.pj.web.jsptag;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -8,9 +9,9 @@ import javax.servlet.jsp.tagext.TagSupport;
  *
  * @author pengju 2011-2-27
  */
-public class InvokeTag extends TagSupport implements Analyzer {
+public class InvokeTag extends TagSupport implements Analyzer , ParamSupportTag{
 
-    private ArrayList<Object> params = new ArrayList<Object>(3);
+    private final ArrayList<ParamTag> params = new ArrayList<ParamTag>(3);
     private String var;
     private String method;
 
@@ -39,12 +40,12 @@ public class InvokeTag extends TagSupport implements Analyzer {
         return EVAL_PAGE;
     }
 
-    /**
-     * @return the params
-     */
-    public ArrayList<Object> getParams() {
+    @Override
+    public List<ParamTag> getParams() {
         return params;
     }
+
+    
 
     /**
      * @return the var
@@ -83,6 +84,10 @@ public class InvokeTag extends TagSupport implements Analyzer {
     }
 
     public Object eval() {
-        return TagService.invoke(pageContext,method,params.toArray(new Object[0]));
+        ArrayList<Object> vals = new ArrayList<Object>(params.size());
+        for (ParamTag val : params) {
+            vals.add(val.getValue());
+        }
+        return TagService.invoke(pageContext,method,vals.toArray(new Object[0]));
     }
 }

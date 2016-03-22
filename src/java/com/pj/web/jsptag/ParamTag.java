@@ -44,9 +44,12 @@ public class ParamTag extends TagSupport{
     public int doStartTag(){
         Tag parent=getParent();
 
-        if(parent instanceof InvokeTag){
-            InvokeTag itg=(InvokeTag)parent;
-            itg.getParams().add(value);
+        if(parent instanceof ParamSupportTag){
+            ParamSupportTag itg=(ParamSupportTag)parent;
+            ParamTag param = new ParamTag();
+            param.setName(getName());
+            param.setValue(getValue());
+            itg.getParams().add(param);
         }
         
         return SKIP_BODY;
