@@ -8,7 +8,6 @@ package com.es.keyassistant.resolvers;
 import com.pj.admin.beans.Article;
 import com.pj.admin.services.ContentService;
 import com.pj.client.core.ServiceResult;
-import com.pj.jdbc.core.ResultList;
 import java.util.Map;
 
 /**

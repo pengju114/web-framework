@@ -7,6 +7,7 @@ package com.es.keyassistant.beans;
 
 import com.pj.jdbc.annotation.Column;
 import com.pj.jdbc.annotation.Table;
+import java.util.Date;
 
 /**
  *
@@ -40,6 +41,13 @@ public class DetectionInfo {
     
     @Column(name = "detection_sn")
     private String detectionSN;
+    
+    @Column(name = "detection_date")
+    private Date detectionDate;
+    
+    @Column(name = "detection_os")
+    private String detectionOS;
+    
 
     /**
      * @return the detectionId
@@ -155,6 +163,22 @@ public class DetectionInfo {
 
     public void setDetectionSN(String detectionSN) {
         this.detectionSN = detectionSN;
+    }
+
+    public Date getDetectionDate() {
+        return detectionDate;
+    }
+
+    public void setDetectionDate(Date detectionDate) {
+        this.detectionDate = detectionDate;
+    }
+
+    public String getDetectionOS() {
+        return detectionOS;
+    }
+
+    public void setDetectionOS(String detectionOS) {
+        this.detectionOS = detectionOS;
     }
     
     

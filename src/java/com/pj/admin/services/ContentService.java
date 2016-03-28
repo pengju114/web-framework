@@ -11,6 +11,8 @@ import com.pj.admin.beans.Attachment;
 import com.pj.jdbc.core.ResultList;
 import com.pj.jdbc.services.BaseService;
 import com.pj.utilities.ArrayUtility;
+import com.pj.utilities.ConvertUtility;
+import com.pj.utilities.StringUtility;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -133,5 +135,25 @@ public class ContentService extends BaseService{
     
     public int addDetectionInfo(DetectionInfo info){
         return getJdbcTemplate().save(info);
+    }
+    
+    public ResultList<DetectionInfo> findDetectionInfos(String field,String fieldVal,Integer pageNumber, Integer pageSize){
+        if (StringUtility.isEmpty(field) || StringUtility.isEmpty(fieldVal)) {
+            return listDetectionInfos(pageNumber, pageSize);
+        }
+        
+        String sql = "select * from t_detection_info where %s %s ?";
+        String opr = "like";
+        Object val = "%"+fieldVal+"%";
+        if ("result".equalsIgnoreCase(field)) {
+            opr = "=";
+            val = ConvertUtility.parseInt(fieldVal);
+        }
+        field = "detection_"+field;
+        return getJdbcTemplate().executeQuery(String.format(sql, field, opr), new Object[]{val}, pageNumber - 1, pageSize, DetectionInfo.class);
+    }
+    
+    public ResultList<DetectionInfo> listDetectionInfos(Integer pageNumber, Integer pageSize){
+        return getJdbcTemplate().list(DetectionInfo.class, pageNumber - 1, pageSize);
     }
 }

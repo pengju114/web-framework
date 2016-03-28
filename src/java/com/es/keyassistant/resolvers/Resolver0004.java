@@ -10,7 +10,6 @@ import com.pj.admin.services.ContentService;
 import com.pj.client.core.ClientException;
 import com.pj.client.core.ServiceResult;
 import com.pj.utilities.ConvertUtility;
-import com.pj.web.jsptag.BeanUtil;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
@@ -98,6 +97,8 @@ public class Resolver0004 extends BaseResolver{
         info.setDetectionPhoneBrand(params.get("brand"));
         info.setDetectionPhoneModel(params.get("module"));
         info.setDetectionResult(ConvertUtility.parseInt(params.get("result"),-1));
+        info.setDetectionOS(params.containsKey("os")?params.get("os"):"Android");
+        info.setDetectionDate(new Date());
     }
     
     private String generateDectionFileName(String tmpName,DetectionInfo info){
@@ -107,7 +108,9 @@ public class Resolver0004 extends BaseResolver{
             suffix = tmpName.substring(index);
         }
         
-        return genarateDetectionSN(info)+suffix;
+        info.setDetectionSN(genarateDetectionSN(info));
+        
+        return info.getDetectionSN()+suffix;
     }
     
     private String genarateDetectionSN(DetectionInfo info){
