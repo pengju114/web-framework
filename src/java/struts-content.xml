@@ -31,11 +31,12 @@
         </action>
         <action name="DeletePkg" method="deletePkg" class="com.pj.admin.actions.PkgAction">
         </action>
-        
+        <!--
         <action name="FindDI" method="findDetectionInfo" class="com.​pj.​admin.​actions.DetectionAction">
-            <result name="success">/content/listDetectionInfo.jsp</result>
+            <result name="success">/admin/content/listDetectionInfo.jsp</result>
         </action>
         <action name="DeleteDI" method="deleteDetectionInfo" class="com.​pj.​admin.​actions.DetectionAction">
         </action>
+        -->
     </package>
 </struts>

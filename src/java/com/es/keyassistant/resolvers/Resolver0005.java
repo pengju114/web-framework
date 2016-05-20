@@ -9,6 +9,8 @@ import com.pj.admin.beans.Article;
 import com.pj.admin.services.ContentService;
 import com.pj.client.core.ServiceResult;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 获取单个常见QA接口
@@ -24,12 +26,21 @@ public class Resolver0005 extends BaseResolver{
         ServiceResult result = new ServiceResult();
         
         if (article != null) {
+            String urlPath = getRequest().getRequestURL().toString();
+            String scheme = getRequest().getScheme();
+            int i = urlPath.indexOf("/", scheme.length()+3);// 跳过协议和"://"
+            if (i > (scheme.length() + 3)) {
+                urlPath = urlPath.substring(0, i);
+            }
+            String content = article.getArticleContent();
+            String regexp = "(\")([^\"\\s]{14,})(\")";              
+            content = content.replaceAll(regexp, "\""+urlPath+"$2"+"\"");// 将图片url替换成完整的url.
             Map<String,Object> e = makeMapByKeyAndValues(
                     "articleId", article.getArticleId(),
                     "articleTitle", article.getArticleTitle(),
                     "articleCreateDate", article.getArticleCreateDate(),
                     "articleAbstract", article.getArticleAbstract(),
-                    "articleContent", article.getArticleContent()
+                    "articleContent", content
             );
                 
             result.getData().add(e);

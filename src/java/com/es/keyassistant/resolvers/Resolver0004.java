@@ -117,16 +117,17 @@ public class Resolver0004 extends BaseResolver{
         Date now = new Date();
         SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddhhmmss");
         Random random = new Random();
-        byte[] bs = new byte[8];
-        random.nextBytes(bs);
         
-        StringBuilder sb = new StringBuilder(bs.length);
-        for (int i = 0; i < bs.length; i++) {
-            byte b = bs[i];
-            sb.append(b);
+        StringBuilder sb = new StringBuilder(8);
+        for (int i = 0; i < 8; i++) {
+            sb.append(random.nextInt(10));
+        }
+        String imei = info.getDetectionPhoneId();
+        if (imei == null) {
+            imei = "00000000";
         }
         String bm = (info.getDetectionPhoneBrand()+"."+info.getDetectionPhoneModel()).replaceAll("\\s+", "_");
-        return String.format("DSN%s-%s-%s-%s", fmt.format(now),bm,info.getDetectionPhoneId(),sb);
+        return String.format("DSN%s-%s-%s-%s", fmt.format(now),bm,imei.replaceAll("\\-+", ""),sb);
     }
     
 }

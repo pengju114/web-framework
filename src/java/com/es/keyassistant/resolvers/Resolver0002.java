@@ -5,11 +5,9 @@
  */
 package com.es.keyassistant.resolvers;
 
-import com.pj.admin.beans.Article;
 import com.pj.admin.beans.Attachment;
 import com.pj.admin.services.ContentService;
 import com.pj.client.core.ServiceResult;
-import com.pj.jdbc.core.ResultList;
 import java.util.Map;
 
 /**
@@ -27,8 +25,8 @@ public class Resolver0002 extends BaseResolver{
         if (attachment != null) {
             
             Map<String,Object> e = makeMapByKeyAndValues(
-                    "lastestVersion",attachment.getAttachmentLevel(),/*最新检测包版本*/
-                    "updateTime",attachment.getAttachmentCreateDate(),/*更新时间*/
+                    "lastVersion",attachment.getAttachmentLevel(),/*最新检测包版本*/
+                    "updateTime",attachment.getAttachmentCreateDate()!=null?attachment.getAttachmentCreateDate().getTime():0,/*更新时间*/
                     "versionInfo",attachment.getAttachmentDescription(),
                     "fileId",attachment.getAttachmentId()
             );
