@@ -14,5 +14,4 @@
     <include file="struts-admin.xml"/>
     <include file="struts-content.xml"/>
     <!-- Add packages here -->
-
 </struts>

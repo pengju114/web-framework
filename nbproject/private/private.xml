@@ -3,17 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/es/keyassistant/resolvers/Resolver0001.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/es/keyassistant/resolvers/Resolver0003.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/es/keyassistant/beans/DetectionInfo.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/es/keyassistant/resolvers/Resolver0002.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/web/jsptag/BeanUtil.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/struts.xml</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/services/ContentService.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/pj/admin/actions/DetectionAction.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/es/keyassistant/resolvers/Resolver0005.java</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/struts-content.xml</file>
-            <file>file:/Users/luzhenwen/Documents/selfProjs/NetBeans/web-framework/src/java/com/es/keyassistant/resolvers/Resolver0004.java</file>
+
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/pj/admin/actions/AdminOperationAction.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/web/admin/fn/role.jsp</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/web/admin/fn/addRole.jsp</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/web/admin/rest.jsp</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/jdbc.cfg.xml</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/pj/web/filters/ClientServiceFilter.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/pj/admin/actions/AdminLoginAction.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/config.xml</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/es/keyassistant/resolvers/TestRESTResolver.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/struts.xml</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/pj/web/filters/AdminAuthenticationFilter.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/web/admin/fn/createRole.jsp</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/pj/admin/actions/RoleAction.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/src/java/com/pj/actions/rest/RestAction.java</file>
+            <file>file:/Users/luzhenwen/Documents/dist/Working/Projects/Netbeans/web-framework/web/error.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -1,4 +1,4 @@
-use db_web;
+use webdb;
 
 insert into t_admin(
     admin_name,
@@ -8,7 +8,7 @@ insert into t_admin(
     admin_mobile,
     admin_sex,/*1 男；0女*/
     admin_email,
-    create_date) 
+    admin_create_date) 
 values (
 	'pengju',
 	'陆振文',
@@ -28,7 +28,7 @@ insert into t_admin(
     admin_mobile,
     admin_sex,/*1 男；0女*/
     admin_email,
-    create_date) 
+    admin_create_date) 
 values (
 	'niclose',
 	'尼可拉斯',
@@ -45,8 +45,8 @@ select * from t_admin;
 insert into t_authority( 
 	authority_name,
     authority_key,
-    last_modified_by, /** 最后修改人ID **/
-    create_date )
+    last_modify_by, /** 最后修改人ID **/
+    authority_create_date )
  values(
 	'添加管理员',
 	'tjgly',
@@ -57,7 +57,7 @@ insert into t_authority(
 	authority_name,
     authority_key,
     last_modified_by, /** 最后修改人ID **/
-    create_date )
+    authority_create_date )
  values(
 	'删除管理员',
 	'scgly',

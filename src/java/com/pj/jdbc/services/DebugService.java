@@ -20,7 +20,7 @@ public class DebugService extends BaseService{
         return getJdbcTemplate().list("t_admin");
     }
     
-    public ResultList<ResultRow> listAll(int start,int length){
-        return getJdbcTemplate().list("t_admin",start,length);
+    public ResultList<ResultRow> listAll(int pn,int ps){
+        return getJdbcTemplate().list("t_admin",pn,ps);
     }
 }

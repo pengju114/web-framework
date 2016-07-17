@@ -1,36 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <filter>
-        <filter-name>exectime</filter-name>
-        <filter-class>test.ExecTimeFilter</filter-class>
+        <description>客户端服务过滤器</description>
+        <filter-name>ClientService</filter-name>
+        <filter-class>com.pj.web.filters.ClientServiceFilter</filter-class>
     </filter>
     <filter>
         <description>后台管理权限校验过滤器</description>
         <filter-name>AdminAuth</filter-name>
         <filter-class>com.pj.web.filters.AdminAuthenticationFilter</filter-class>
-    </filter>
-    <filter>
-        <filter-name>struts2</filter-name>
-        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+        <init-param>
+            <description>要跳过的URI,逗号隔开多个</description>
+            <param-name>skip</param-name>
+            <param-value>AdminLogin.action,AdminLogin</param-value>
+        </init-param>
     </filter>
     <filter>
         <description>设置编码过滤器</description>
         <filter-name>CharsetFilter</filter-name>
         <filter-class>com.pj.web.filters.SetCharsetFilter</filter-class>
-        <init-param>
-            <param-name>charset</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
+    </filter>
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>exectime</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>struts2</filter-name>
+        <filter-name>ClientService</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
@@ -44,7 +39,7 @@
         <dispatcher>INCLUDE</dispatcher>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>exectime</filter-name>
+        <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
@@ -54,17 +49,9 @@
         <listener-class>com.pj.web.listeners.ContextListener</listener-class>
     </listener>
     <servlet>
-        <servlet-name>ClientServiceServlet</servlet-name>
-        <servlet-class>com.pj.client.core.ClientServiceServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ValidationCodeServlet</servlet-name>
         <servlet-class>com.pj.utilities.servlets.ValidationCodeServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ClientServiceServlet</servlet-name>
-        <url-pattern>/client.service</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ValidationCodeServlet</servlet-name>
         <url-pattern>/random.jpg</url-pattern>

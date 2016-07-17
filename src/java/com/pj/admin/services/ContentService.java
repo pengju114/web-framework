@@ -37,7 +37,7 @@ public class ContentService extends BaseService{
         }
         String sql = "select * from t_article where (article_status is null or article_status = 0) and article_title like ? order by article_id desc";
         String param = "%"+title+"%";
-        ResultList<Article> rs = getJdbcTemplate().executeQuery(sql, new Object[]{param}, pageNumber-1, pageSize, Article.class);
+        ResultList<Article> rs = getJdbcTemplate().executeQuery(sql, new Object[]{param}, pageNumber, pageSize, Article.class);
         return rs;
     }
     

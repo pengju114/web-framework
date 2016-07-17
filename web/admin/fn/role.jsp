@@ -31,7 +31,7 @@
                                     <tr>
                                         <td>
                                             <c:if test="${add}">
-                                                <a style="float: right; margin: 0px 12px 0 0;" href="javascript:void(0)">+添加角色</a>
+                                                <a style="float: right; margin: 0px 12px 0 0;" href="${contextPath}/admin/fn/createRole.jsp">+添加角色</a>
                                             </c:if>
                                             当前位置:&nbsp;<a id="nav_title" href="javascript:void(0)"></a>&nbsp;>>&nbsp;
                                             <a id="nav_cat" href="javascript:void(0)"></a>

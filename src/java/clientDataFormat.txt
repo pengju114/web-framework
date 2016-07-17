@@ -3,9 +3,11 @@
     pageSize:每页记录数，可选；默认为10。
     dataType:返回结果的数据类型，可选；JSON或者XML；默认为JSON。
     module:模块，可选。
-    service:要访问的服务ID，必填*
+    service:要访问的服务ID，缺省时触发REST URI
 
-普通的POST或GET请求发送参数即可
+以上参数使用普通的POST或GET请求发送参数即可.
+当使用REST URI时,除以上参数使用普通的GET或POST发送外,业务参数必须以JSON形式发送,并且参数名为:params.
+如:/client.service/add/user/?params={"name":"userName","age":33}
 
 
 响应结果:

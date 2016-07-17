@@ -5,6 +5,7 @@
  */
 package com.pj.web.filters;
 
+import com.pj.web.res.Config;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -22,7 +23,7 @@ public class SetCharsetFilter implements Filter{
     private String charset;
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        charset = filterConfig.getInitParameter("charset");
+        charset = Config.getConfig(Config.Key.CHARSET, Config.Value.CHARSET);
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
